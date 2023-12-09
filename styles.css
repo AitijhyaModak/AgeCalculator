@@ -4,71 +4,38 @@
 - Smokey grey: hsl(0, 1%, 44%)
 - Off black: hsl(0, 0%, 8%) */
 
-:root{    
-    --offwhite: hsl(0, 0%, 100%);
+:root{
+    --white: hsl(0, 0%, 100%);
+    --offwhite: hsl(0, 0%, 94%);
     --lightgrey: hsl(0, 0%, 86%);
-    --smokeygrey: hsl(0,1%,44%);
+    --smokeygrey: hsl(0, 1%, 44%);
     --offblack: hsl(0, 0%, 8%);
-    --purple: #854dff5;
 }
 
-html{
-    padding:0;
-    margin:0;
+*, *::before , *::after{
     box-sizing: border-box;
-}
-body{
-    padding:0;
     margin:0;
+    padding:0;
 }
 
 body{
-    height: 100vh;
     background-color: var(--lightgrey);
+    min-height:100vh;
     display: flex;
     justify-content: center;
-}
-
-.container{
-    background-color: var(--offwhite);
-    width: 600px;
-    padding:27px;
-    align-self: center;
-    justify-self: center;
-    position: relative;
-}
-
-
-input{
-    width: 103px;
-    margin:0;
-    padding:0;
-    height: 46px;
-    border-radius:5px;
-    border: 1px solid grey;
-}
-/* #day{
-    position: absolute;
-}*/
-#month{
-    position: absolute;
-    left: 170px;
-} 
-#year{
-    position: absolute;
-    left: 313px; 
-}
-
-hr{
-    margin-top:40px;
+    align-items: center;
 }
 
 svg{
-    height:80px;
-    width:80px;
-    position: absolute;
-    right:23px;
-    top:72px;
-    margin:0;
-    padding:0;
+    height:50px;
+    width: 50px;
+}
+
+.main{
+    /* border: solid black 1px; */
+    height: fit-content;
+    border-radius:17px;
+    border-bottom-right-radius: 54px;
+    background-color: var(--white);
+    padding:1.9rem;
 }
