@@ -5,27 +5,79 @@
     <title>Age Calculator</title>
     <link rel="shortcut icon" href="assets/images/favicon-32x32.png">
     <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 
 <body>
-    <div class="container">
-        <div class="form">
-            <input id="day" type="number">
-            <input id="month" type="number">
-            <input id="year" type="number">
+    <div class="content">
+        <div class="main">
+
+            <div class="form-container">
+                <form novalidate id="myform" class="form" method="POST" onsubmit="return onsub()">
+
+                    <input class="" id="day" type="number" name="day" min="1" max="31" placeholder="DD">
+                    <label for="day" class="lbl">DAY<span id="error_of_day" class="error-message"></span></label>
+
+                    <input class="" id="month" type="number" name="month" min="1" max="12" placeholder="MM">
+                    <label for="month" class="lbl">MONTH<span id="error_of_month" class="error-message"></span></label>
+
+                    <input class="" id="year" type="number" name="year" max="2023" placeholder="YYYY">
+                    <label for="year" class="lbl">YEAR<span id="error_of_year" class="error-message"></span></label>
+
+                    <button type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            width="512" height="512" x="0" y="0" viewBox="0 0 48 48"
+                            style="enable-background:new 0 0 512 512" xml:space="preserve">
+                            <g
+                                transform="matrix(-1.8369701987210297e-16,1,-1,-1.8369701987210297e-16,48.00000000000001,0)">
+                                <path class="background" fill="#854dff"
+                                    d="M24 2C11.87 2 2 11.87 2 24s9.87 22 22 22 22-9.87 22-22S36.13 2 24 2z" opacity="1"
+                                    data-original="#ffc107"></path>
+                                <path fill="#ffffff"
+                                    d="m35.519 25.302-6 7a1.998 1.998 0 0 1-2.82.217 2 2 0 0 1-.218-2.82L29.651 26H14a2 2 0 0 1 0-4h15.651l-3.17-3.698a2 2 0 0 1 3.038-2.604l6 7a2 2 0 0 1 0 2.604z"
+                                    opacity="1" data-original="#ffffff"></path>
+                            </g>
+                        </svg>
+                    </button>
+
+                </form>
+            </div>
+
+
+            <p class="basic"> <span id="no_of_years" class="hyphen">- -</span>
+                <span>years</span>
+            </p>
+            <p class="basic"> <span id="no_of_months" class="hyphen">- -</span>
+                <span>months</span>
+            </p>
+            <p class="basic"> <span id="no_of_days" class="hyphen">- -</span>
+                <span>days</span>
+            </p>
         </div>
-        <hr>
-        <div class="display"></div>
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512"
-            height="512" x="0" y="0" viewBox="0 0 48 48" style="enable-background:new 0 0 512 512" xml:space="preserve"
-            class="">
-            <g transform="matrix(-1.8369701987210297e-16,1,-1,-1.8369701987210297e-16,48.00000000000001,0)">
-                <path fill="#854dff" d="M24 2C11.87 2 2 11.87 2 24s9.87 22 22 22 22-9.87 22-22S36.13 2 24 2z"
-                    opacity="1" data-original="#ffc107" class=""></path>
-                <path fill="#ffffff"
-                    d="m35.519 25.302-6 7a1.998 1.998 0 0 1-2.82.217 2 2 0 0 1-.218-2.82L29.651 26H14a2 2 0 0 1 0-4h15.651l-3.17-3.698a2 2 0 0 1 3.038-2.604l6 7a2 2 0 0 1 0 2.604z"
-                    opacity="1" data-original="#ffffff"></path>
-            </g>
-        </svg>
     </div>
+
+    <footer>
+        
+            <a href="https://github.com/AitijhyaModak/AgeCalculator.git" target="_blank"><span class="name">
+                <p>AitijhyaModak</p>
+            </span></a>
+
+            <a href="https://github.com/AitijhyaModak/AgeCalculator.git" target="_blank"><span class="logo">
+                <svg id="github-logo" xmlns="http://www.w3.org/2000/svg" version="1.1"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0"
+                    viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                    <g>
+                        <path
+                            d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"
+                             fill="#5c6bc0" data-original="#5c6bc0" class=""></path>
+                    </g>
+                </svg>
+            </span></a>
+    </footer>
+
+
 </body>
+
+
+
+<script charset="utf-8" src="index.js"></script>

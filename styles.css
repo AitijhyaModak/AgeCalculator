@@ -1,41 +1,457 @@
-/* - White: hsl(0, 0%, 100%)
-- Off white: hsl(0, 0%, 94%)
-- Light grey: hsl(0, 0%, 86%)
-- Smokey grey: hsl(0, 1%, 44%)
-- Off black: hsl(0, 0%, 8%) */
+/*css styles*/
 
-:root{
+
+
+
+
+/*css reset*/
+:root {
     --white: hsl(0, 0%, 100%);
     --offwhite: hsl(0, 0%, 94%);
     --lightgrey: hsl(0, 0%, 86%);
     --smokeygrey: hsl(0, 1%, 44%);
     --offblack: hsl(0, 0%, 8%);
+    --purple: hsl(259, 100%, 65%);
+    --lightred: hsl(0, 100%, 67%);
 }
 
-*, *::before , *::after{
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
-body{
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+
+
+/*css animations*/
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideintop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideinleft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    from {
+        background-color: black;
+        height: 70px;
+        width: 70px;
+        border-radius: 35px;
+        opacity: 1;
+        right: -3px;
+        bottom: -35px;
+    }
+
+    to {
+        background-color: rgb(255, 255, 255);
+        height: 100px;
+        width: 100px;
+        border-radius: 50px;
+        opacity: 1;
+        right: -18px;
+        bottom: -49.8px;
+    }
+}
+
+@keyframes glow {
+    from {
+        transform: scale(1);
+        color: black;
+        text-shadow: none;
+    }
+
+    to {
+        transform: scale(1.03);
+        color: blueviolet;
+        text-shadow: -5px 3px 4px hsl(259deg 78.64% 76.25%);
+    }
+}
+
+
+
+
+/*css main styles*/
+body {
     background-color: var(--lightgrey);
-    min-height:100vh;
+    min-height: 100vh;
+}
+
+.content {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 91.5vh;
 }
 
-svg{
-    height:50px;
-    width: 50px;
-}
-
-.main{
-    /* border: solid black 1px; */
+.main {
+    box-shadow: 5px 5px 20px 5px #9e9898;
     height: fit-content;
-    border-radius:17px;
-    border-bottom-right-radius: 54px;
+    width: fit-content;
+    border-radius: 50px;
+    border-bottom-right-radius: 220px;
     background-color: var(--white);
-    padding:1.9rem;
+    padding: 1.9rem;
+    opacity:0;
+
+    animation-name: fadein;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: .7s;
+}
+
+
+
+
+
+
+/*css form styling*/
+.form-container {
+    height: calc(4rem + 35px + 10px + 1rem + 1.9rem);
+}
+
+button {
+    height: 70px;
+    width: 70px;
+    position: absolute;
+    right: -3px;
+    bottom: -35px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 35px;
+}
+
+svg {
+    height: 70px;
+    width: 70px;
+}
+
+button:hover {
+    animation-name: pulse;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: backwards;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+}
+
+button:hover .background,
+button:active .background {
+    fill: black;
+}
+
+form {
+    position: relative;
+    border-bottom: var(--lightgrey) solid 2px;
+    display: grid;
+    grid-template-rows: 1rem calc(4rem + 35 px);
+    grid-template-columns: 8rem 8rem 8rem 5rem;
+    row-gap: 10px;
+    column-gap: 30px;
+    opacity:0;
+
+    animation-name: slideintop;
+    animation-duration: .5s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 2.2s;
+}
+
+.lbl {
+    display: block;
+    position: relative;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: var(--smokeygrey);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+label[for="day"] {
+    grid-column: 1/2;
+}
+
+label[for="month"] {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+label[for="year"] {
+    grid-column: 3/4;
+    grid-row: 1/2;
+}
+
+#year {
+    grid-column: 3/4;
+    grid-row: 2/3;
+}
+
+#month {
+    grid-row: 2/3;
+    grid-column: 2/3;
+}
+
+#day {
+    grid-row: 2/3;
+    grid-column: 1/2;
+}
+
+input {
+    margin-bottom: 35px;
+    height: 4rem;
+    border-radius: 8px;
+    border: 2px solid var(--lightgrey);
+    padding: 1rem;
+    outline: none;
+    position: relative;
+    font-size: 1.5rem;
+    caret-color: var(--purple);
+    font-weight: bolder;
+}
+
+input:hover,
+input:active,
+input:focus {
+    border: solid 1px var(--purple);
+    cursor: pointer;
+}
+
+input:focus::placeholder {
+    transform: scaleY(0);
+    transition-duration: .14s;
+    transition-timing-function: ease-in;
+}
+
+#month:hover+.lbl[for="month"],
+#month:active+.lbl[for="month"],
+#month:focus+.lbl[for="month"],
+#year:hover+.lbl[for="year"],
+#year:focus+.lbl[for="year"],
+#year:active+.lbl[for="year"],
+#day:hover+.lbl[for="day"],
+#day:active+.lbl[for="day"],
+#day:focus+.lbl[for="day"] {
+    color: var(--purple);
+}
+
+
+
+
+
+
+
+
+/*css result styling*/
+.basic {
+    font-size: 5rem;
+    font-style: italic;
+    font-weight: 900;
+    opacity:0;
+    
+    animation-name:slideinleft;
+    animation-duration: .7s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 3.3s;
+}
+
+span.hyphen {
+    color: var(--purple);
+    letter-spacing: -3px;
+}
+
+
+
+
+/*css error message stylng*/
+.error-message {
+    font-size: .75rem;
+    font-style: initial;
+    letter-spacing: 0px;
+    color: rgb(255, 0, 0);
+    position: absolute;
+    top: calc(4rem + 37px);
+    left: 3px;
+    overflow: visible;
+    white-space: nowrap;
+    text-transform: capitalize;
+}
+
+.error-input {
+    border: red solid 2px;
+    content: none;
+}
+
+.error-lbl {
+    color: red;
+    opacity: .9;
+}
+
+
+
+
+/*css footer styling*/
+footer {
+    display: flex;
+    width: 100vw;
+    height: 8.5vh;
+    font-size: 1rem;
+    background-color: rgb(185, 179, 179);
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+footer svg {
+    height: 25px;
+    width: 25px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    ;
+}
+
+footer svg:hover {
+    transform: scale(1.2) rotate(180deg);
+
+    transition-duration: .15s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+
+    cursor: pointer;
+}
+
+footer .name:hover p {
+
+    transition-duration: .2s;
+    transition-delay: 0s;
+    transition-timing-function: linear;
+
+    animation-duration: .2s;
+    animation-name: glow;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 0s;
+}
+
+
+
+
+
+/*css styles for mobile screens (<800px)*/
+@media only screen and (max-width:800px) and (min-width:601px) {
+
+    .main {
+        width: 100vw;
+        align-self: flex-start;
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+    }
+}
+
+
+@media only screen and (max-width:600px) {
+
+    /*styling main*/
+    .main {
+        width: 100vw;
+        align-self: flex-start;
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+        padding:25px;
+    }
+
+    /*styling form*/
+    form {
+        grid-template-rows: 13px calc(50px + 35 px);
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: 10px;
+        column-gap: calc((100% - 240px)/2);
+    }
+    .lbl{
+        font-size:13px;
+    }
+    input{
+        width:80px;
+        height:50px;
+        margin-bottom: 85px;
+        font-size:18px;
+        padding:12px
+    }
+    button {
+        left: calc(50% - 35px);
+    }
+    button:hover,button:active,button:focus{
+        animation:none;
+    }
+    button:hover .background{
+        fill:var(--purple);
+    }
+    .form-container{
+        height: 200px;
+    }
+
+
+
+    /*results*/
+    .basic{
+        font-size:35px;
+    }
+
+
+
+    /*error message*/
+    .error-message{
+        overflow: visible;
+        white-space: wrap;
+        top: calc(60px + 25px);
+    }
 }
