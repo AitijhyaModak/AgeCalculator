@@ -454,4 +454,16 @@ footer .name:hover p {
         white-space: wrap;
         top: calc(60px + 25px);
     }
+
+
+
+
+    /*footer*/
+    footer .name:hover p{
+        animation:none;
+    }
+    footer svg:hover{
+        animation:none;
+        transform: none;
+    }
 }
