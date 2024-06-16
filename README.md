@@ -1,5 +1,5 @@
 
-# QR Code Scan Page
+# Age Calculator
 
 An Age Calculator Site built using basic  HTML, Javascript and CSS.
 
